@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Search, Globe, ChevronRight, BookOpen, Newspaper, GraduationCap, Building2, Sparkles, TrendingUp } from 'lucide-react';
+import { Search, Globe, ChevronRight, BookOpen, Newspaper, GraduationCap, Building2, TrendingUp } from 'lucide-react';
 import { HERO_STATS } from '../../mock/mockData';
 
 export const HeroSection: React.FC = () => {
