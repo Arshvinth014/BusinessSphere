@@ -1,16 +1,29 @@
-export interface MarketTickerItem {
-  id: string;
-  symbol: string;
+export interface PortfolioItem {
   name: string;
-  value: string;
-  change: string;
-  isPositive: boolean;
+  percentage: number;
+  color: string;
 }
 
-export interface StatItem {
+export interface PopularStock {
+  symbol: string;
+  name: string;
+  price: string;
+  change: string;
+  isPositive: boolean;
+  logoBg?: string;
+  logoText?: string;
+}
+
+export interface Course {
   id: string;
-  label: string;
-  value: string;
+  title: string;
+  category: string;
+  level: string;
+  duration: string;
+  rating: number;
+  studentsCount: string;
+  price: string;
+  imageUrl: string;
 }
 
 export interface Article {
@@ -28,42 +41,23 @@ export interface Article {
   isFeatured?: boolean;
 }
 
-export interface Course {
+export interface InvestmentPlan {
   id: string;
   title: string;
-  category: string;
-  level: 'Beginner' | 'Intermediate' | 'Advanced';
-  duration: string;
-  rating: number;
-  studentsCount: string;
-  price: string;
+  riskLevel: 'LOW RISK' | 'MODERATE RISK' | 'HIGH RISK';
+  riskColor: string;
+  description: string;
+  expectedReturn: string;
+  minInvestment: string;
   imageUrl: string;
 }
 
 export interface NewsItem {
   id: string;
   category: string;
-  title: string;
   timeAgo: string;
+  title: string;
   imageUrl: string;
-}
-
-export interface MarketSnapshotItem {
-  id: string;
-  name: string;
-  value: string;
-  change: string;
-  isPositive: boolean;
-}
-
-export interface Company {
-  id: string;
-  name: string;
-  category: string;
-  marketCap: string;
-  logoText: string;
-  logoBg: string;
-  isFollowing?: boolean;
 }
 
 export interface Expert {
@@ -77,43 +71,10 @@ export interface Expert {
   isFollowing?: boolean;
 }
 
-export interface MarketCategory {
+export interface GoalItem {
   id: string;
   title: string;
-  iconName: string;
-  description?: string;
-}
-
-export interface CareerPath {
-  id: string;
-  title: string;
+  subtitle: string;
   progressPercent: number;
-  coursesCount: number;
-  certificatesCount: number;
   iconName: string;
-}
-
-export interface CommunityQuestion {
-  id: string;
-  question: string;
-  answersCount: number;
-  viewsCount: string;
-  tags: string[];
-  author: string;
-}
-
-export interface PopularCommunity {
-  id: string;
-  name: string;
-  membersCount: string;
-  iconName: string;
-}
-
-export interface PodcastEpisode {
-  id: string;
-  title: string;
-  duration: string;
-  category: string;
-  episodeNumber: string;
-  imageUrl: string;
 }

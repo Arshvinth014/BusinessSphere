@@ -1,187 +1,120 @@
-import React, { useState } from 'react';
-import { Search, Globe, ChevronRight, BookOpen, Newspaper, GraduationCap, Building2, TrendingUp } from 'lucide-react';
-import { HERO_STATS } from '../../mock/mockData';
+import React from 'react';
+import { ShieldCheck, ChevronRight, Home, Umbrella, Plane } from 'lucide-react';
+import { GOALS_DATA } from '../../mock/mockData';
 
 export const HeroSection: React.FC = () => {
-  const [searchQuery, setSearchQuery] = useState('');
-  const [activeTab, setActiveTab] = useState<'dictionary' | 'articles' | 'courses' | 'companies'>('dictionary');
-
   return (
-    <section className="relative w-full bg-[#0B1528] text-white overflow-hidden pt-10 pb-16 border-b border-slate-800">
-      {/* Dynamic Background Glows & Network Graphics */}
-      <div className="absolute inset-0 pointer-events-none overflow-hidden">
-        <div className="absolute top-[-10%] right-[-5%] w-[600px] h-[600px] bg-blue-600/15 rounded-full blur-[140px]" />
-        <div className="absolute bottom-[-10%] left-[10%] w-[500px] h-[500px] bg-emerald-500/10 rounded-full blur-[120px]" />
-        <div className="absolute top-[30%] left-[45%] w-[400px] h-[400px] bg-indigo-500/10 rounded-full blur-[100px]" />
-        
-        {/* Globe image background overlay on right side */}
-        <div className="absolute right-0 top-0 bottom-0 w-full lg:w-1/2 opacity-25 mix-blend-screen pointer-events-none">
-          <img
-            src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=1200&auto=format&fit=crop&q=80"
-            alt="World Network background"
-            className="w-full h-full object-cover object-right"
-          />
-        </div>
+    <section className="relative w-full min-h-[580px] lg:min-h-[640px] 2xl:min-h-[720px] text-white overflow-hidden py-12 lg:py-20 flex items-center">
+      
+      {/* Clear, natural mountain background image from public/homepageHero.png - NO BLUR, NO DARK FILTER */}
+      <div className="absolute inset-0 z-0">
+        <img
+          src="/homepageHero.png"
+          alt="Mountain landscape"
+          className="w-full h-full object-cover object-[center_bottom]"
+        />
       </div>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        
-        {/* Upper Hero Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center pt-4">
+      {/* Inner Content Container */}
+      <div className="w-full max-w-[1700px] 2xl:max-w-[2200px] mx-auto px-4 sm:px-6 md:px-8 lg:px-12 2xl:px-16 relative z-10">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
           
-          <div className="lg:col-span-8 space-y-6">
-            
-            {/* Top Pill Badge */}
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-slate-800/80 border border-slate-700/70 text-slate-200 text-sm sm:text-base font-bold backdrop-blur-md shadow-inner">
-              <Globe className="w-4 h-4 text-blue-400" />
-              <span>Global Business Knowledge Platform</span>
-            </div>
-
-            {/* Main Headline */}
-            <h1 className="text-3xl sm:text-5xl lg:text-6xl xl:text-7xl font-extrabold tracking-tight leading-[1.15]">
-              The World's Knowledge Platform for{' '}
-              <span className="bg-gradient-to-r from-blue-400 via-cyan-300 to-emerald-400 bg-clip-text text-transparent">
-                Business & Investment
+          {/* Left Hero Content */}
+          <div className="lg:col-span-6 space-y-6">
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl 2xl:text-7xl font-extrabold tracking-tight leading-[1.15] text-white drop-shadow-md">
+              Plan your Money.{' '}
+              <span className="text-[#00E599] block mt-2 drop-shadow-md">
+                Invest with confidence.
               </span>
             </h1>
 
-            {/* Subtitle Slogan */}
-            <p className="text-xl sm:text-2xl lg:text-3xl font-bold text-slate-200 tracking-wide flex items-center gap-3">
-              <span>Learn.</span>
-              <span className="text-blue-400">•</span>
-              <span>Practice.</span>
-              <span className="text-blue-400">•</span>
-              <span>Connect.</span>
-              <span className="text-blue-400">•</span>
-              <span className="text-emerald-400">Grow.</span>
+            <p className="text-white text-base sm:text-lg lg:text-xl 2xl:text-2xl max-w-xl leading-relaxed font-medium drop-shadow-sm">
+              Build a personalized investment plan, grow your wealth and get the knowledge you need for a secure future.
             </p>
+          </div>
 
-            {/* Interactive Search Bar Box */}
-            <div className="mt-8 bg-white/95 backdrop-blur-md p-2.5 rounded-2xl shadow-2xl border border-slate-200/20 max-w-3xl">
-              <form onSubmit={(e) => e.preventDefault()} className="flex items-center gap-3">
-                <div className="pl-3 text-slate-400">
-                  <Search className="w-6 h-6 sm:w-7 sm:h-7 text-slate-500" />
+          {/* Right Floating Cards Row */}
+          <div className="lg:col-span-6 grid grid-cols-1 sm:grid-cols-2 gap-5">
+            
+            {/* Card 1: Your Risk Profile (Translucent Dark Teal/Blue Glass Card) */}
+            <div className="bg-[#12334d]/80 border border-white/20 backdrop-blur-md rounded-2xl p-5 sm:p-6 shadow-2xl text-white space-y-4 flex flex-col justify-between">
+              <div>
+                <div className="flex items-center gap-2 text-sm sm:text-base text-slate-100 font-semibold mb-4">
+                  <div className="p-1.5 rounded-full bg-white/20">
+                    <ShieldCheck className="w-4 h-4 text-white" />
+                  </div>
+                  <span>Your Risk profile</span>
                 </div>
-                <input
-                  type="text"
-                  value={searchQuery}
-                  onChange={(e) => setSearchQuery(e.target.value)}
-                  placeholder="Search anything in business, finance, companies, terms..."
-                  className="w-full py-3 px-2 text-slate-900 placeholder:text-slate-500 text-base sm:text-lg lg:text-xl font-semibold focus:outline-none bg-transparent"
-                />
-                <button
-                  type="submit"
-                  className="px-7 py-4 rounded-xl bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-400 hover:to-teal-500 text-white font-extrabold text-base sm:text-lg flex items-center gap-2 shadow-lg shadow-emerald-600/30 transition-all hover:scale-[1.02] active:scale-[0.98] shrink-0"
+
+                <div className="flex items-center justify-between gap-3">
+                  <div className="flex items-center gap-3">
+                    <div className="p-2.5 rounded-xl bg-emerald-500/20 border border-emerald-400/30 text-[#00E599] flex-shrink-0">
+                      <ShieldCheck className="w-7 h-7" />
+                    </div>
+                    <div>
+                      <h3 className="text-lg sm:text-xl font-bold text-white leading-none">Balanced</h3>
+                      <p className="text-xs sm:text-sm text-slate-200 mt-1 font-normal line-clamp-2">
+                        You're comfortable with some market fluctuations for higher long-term returns.
+                      </p>
+                    </div>
+                  </div>
+                  <span className="px-3 py-1 rounded-full text-xs font-semibold bg-white/15 text-slate-100 border border-white/25 flex-shrink-0 whitespace-nowrap self-start">
+                    Moderate Risk
+                  </span>
+                </div>
+              </div>
+
+              <div className="pt-3 border-t border-white/15">
+                <a
+                  href="#risk-assessment"
+                  className="text-xs sm:text-sm font-bold text-[#00E599] hover:underline inline-flex items-center gap-1"
                 >
-                  <Search className="w-5 h-5" />
-                  <span className="hidden sm:inline">Search</span>
-                </button>
-              </form>
-            </div>
-
-            {/* Quick Category Filter Pills underneath Search */}
-            <div className="flex flex-wrap items-center gap-3 pt-2 text-sm sm:text-base font-semibold">
-              <button
-                onClick={() => setActiveTab('dictionary')}
-                className={`flex items-center gap-2 px-4 py-2.5 rounded-xl transition-all ${
-                  activeTab === 'dictionary'
-                    ? 'bg-blue-600/40 text-white border border-blue-400/60 shadow-md'
-                    : 'bg-slate-900/70 text-slate-300 border border-slate-800 hover:bg-slate-800'
-                }`}
-              >
-                <BookOpen className="w-4 h-4 text-blue-400" />
-                Dictionary
-              </button>
-
-              <button
-                onClick={() => setActiveTab('articles')}
-                className={`flex items-center gap-2 px-4 py-2.5 rounded-xl transition-all ${
-                  activeTab === 'articles'
-                    ? 'bg-blue-600/40 text-white border border-blue-400/60 shadow-md'
-                    : 'bg-slate-900/70 text-slate-300 border border-slate-800 hover:bg-slate-800'
-                }`}
-              >
-                <Newspaper className="w-4 h-4 text-emerald-400" />
-                Articles
-              </button>
-
-              <button
-                onClick={() => setActiveTab('courses')}
-                className={`flex items-center gap-2 px-4 py-2.5 rounded-xl transition-all ${
-                  activeTab === 'courses'
-                    ? 'bg-blue-600/40 text-white border border-blue-400/60 shadow-md'
-                    : 'bg-slate-900/70 text-slate-300 border border-slate-800 hover:bg-slate-800'
-                }`}
-              >
-                <GraduationCap className="w-4 h-4 text-purple-400" />
-                Courses
-              </button>
-
-              <button
-                onClick={() => setActiveTab('companies')}
-                className={`flex items-center gap-2 px-4 py-2.5 rounded-xl transition-all ${
-                  activeTab === 'companies'
-                    ? 'bg-blue-600/40 text-white border border-blue-400/60 shadow-md'
-                    : 'bg-slate-900/70 text-slate-300 border border-slate-800 hover:bg-slate-800'
-                }`}
-              >
-                <Building2 className="w-4 h-4 text-amber-400" />
-                Companies
-              </button>
-            </div>
-
-          </div>
-
-          {/* Right Floating Highlights Card */}
-          <div className="lg:col-span-4 hidden lg:flex flex-col gap-3 justify-end items-end text-right pr-4">
-            <div className="p-6 rounded-2xl bg-slate-900/90 border border-slate-700/60 backdrop-blur-md shadow-xl max-w-sm space-y-4">
-              <div className="flex items-center gap-2 text-emerald-400 text-sm font-extrabold uppercase tracking-wider">
-                 Global Insights
-              </div>
-              <p className="text-slate-200 text-sm sm:text-base leading-relaxed font-medium">
-                Real-time data, expert perspectives, and comprehensive business term definitions for a smarter future.
-              </p>
-              <div className="pt-3 border-t border-slate-800 flex items-center justify-between text-xs sm:text-sm text-slate-400 font-semibold">
-                <span>Better Decisions</span>
-                <span className="text-blue-400 flex items-center gap-1 font-bold">
-                  Greater Opportunities <ChevronRight className="w-4 h-4" />
-                </span>
+                  View Full Assessment <ChevronRight className="w-4 h-4" />
+                </a>
               </div>
             </div>
+
+            {/* Card 2: Your Goals (White Glass Card) */}
+            <div className="bg-white/95 border border-white/90 backdrop-blur-md rounded-2xl p-5 sm:p-6 shadow-2xl text-slate-900 space-y-4 flex flex-col justify-between">
+              <div className="flex items-center justify-between">
+                <h3 className="text-base sm:text-lg font-bold text-slate-900">Your Goals</h3>
+                <a href="#goals" className="text-xs sm:text-sm text-emerald-600 font-bold hover:underline flex items-center gap-0.5">
+                  View details <ChevronRight className="w-4 h-4" />
+                </a>
+              </div>
+
+              <div className="space-y-3.5">
+                {GOALS_DATA.map((goal) => (
+                  <div key={goal.id} className="space-y-1.5">
+                    <div className="flex items-center justify-between text-xs sm:text-sm gap-2">
+                      <div className="flex items-center gap-2 font-bold text-slate-800 min-w-0">
+                        <div className="p-1.5 rounded-full bg-emerald-100 text-emerald-600 flex-shrink-0">
+                          {goal.iconName === 'Home' && <Home className="w-4 h-4" />}
+                          {goal.iconName === 'Umbrella' && <Umbrella className="w-4 h-4" />}
+                          {goal.iconName === 'Plane' && <Plane className="w-4 h-4" />}
+                        </div>
+                        <span className="truncate">{goal.title}</span>
+                      </div>
+                      <span className="text-xs text-slate-500 font-semibold flex-shrink-0 whitespace-nowrap">{goal.subtitle}</span>
+                    </div>
+
+                    {/* Progress Bar */}
+                    <div className="w-full h-2 bg-slate-100 rounded-full overflow-hidden">
+                      <div
+                        className="h-full bg-emerald-500 rounded-full"
+                        style={{ width: `${goal.progressPercent}%` }}
+                      />
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
           </div>
 
         </div>
-
-        {/* Global Business Intelligence Stats Counter Row */}
-        <div className="mt-14 pt-8 border-t border-slate-800/80">
-          <div className="mb-6">
-            <h3 className="text-lg sm:text-xl font-bold text-white flex items-center gap-2">
-              <TrendingUp className="w-5 h-5 text-blue-400" />
-              Global Business Intelligence
-            </h3>
-            <p className="text-sm sm:text-base text-slate-300 font-medium">
-              Real-time data, expert insights, and comprehensive knowledge for a smarter labor force.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4 sm:gap-5">
-            {HERO_STATS.map((stat) => (
-              <div
-                key={stat.id}
-                className="bg-slate-900/70 border border-slate-800 hover:border-blue-500/50 rounded-2xl p-5 transition-all duration-200 hover:scale-[1.02]"
-              >
-                <div className="text-2xl sm:text-3xl font-black text-white tracking-tight">
-                  {stat.value}
-                </div>
-                <div className="text-xs sm:text-sm text-slate-300 font-bold mt-1">
-                  {stat.label}
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-
       </div>
     </section>
   );
 };
+
