@@ -3,9 +3,46 @@
 :root {
   color: #1f2937;
   background: #ffffff;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
   font-synthesis: none;
   text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* TV & Ultra-wide Screen Responsive Font Scaling */
+html {
+  font-size: 16px;
+}
+
+@media (min-width: 1280px) {
+  html {
+    font-size: 17px;
+  }
+}
+
+@media (min-width: 1536px) {
+  html {
+    font-size: 19px; /* 2xl screens */
+  }
+}
+
+@media (min-width: 1920px) {
+  html {
+    font-size: 22px; /* Full HD TV / 1080p TV viewing distance */
+  }
+}
+
+@media (min-width: 2560px) {
+  html {
+    font-size: 26px; /* 1440p / 2K TV screens */
+  }
+}
+
+@media (min-width: 3840px) {
+  html {
+    font-size: 34px; /* 4K Smart TV screens */
+  }
 }
 
 html, body, #root {
@@ -57,3 +94,4 @@ html, body, #root {
     transform: rotate(360deg);
   }
 }
+
