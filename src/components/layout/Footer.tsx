@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { TrendingUp, CheckCircle2 } from 'lucide-react';
+import { CheckCircle2 } from 'lucide-react';
 
 export const Footer: React.FC = () => {
   const [email, setEmail] = useState('');
@@ -15,7 +15,7 @@ export const Footer: React.FC = () => {
 
   return (
     <footer className="w-full bg-[#050B14] text-slate-400 border-t border-slate-800/80">
-      
+
       {/* Main Links Container */}
       <div className="w-full max-w-[1700px] 2xl:max-w-[2200px] mx-auto px-4 sm:px-6 md:px-8 lg:px-12 2xl:px-16 py-12 sm:py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8">
