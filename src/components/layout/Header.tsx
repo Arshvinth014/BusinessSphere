@@ -1,10 +1,14 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-import { Search, Menu, X } from 'lucide-react';
+import { Link, useLocation } from 'react-router-dom';
+import { Search, Menu, X, Bell } from 'lucide-react';
 
 export const Header: React.FC = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
+  const location = useLocation();
+
+  const isBlogsActive = location.pathname === '/blogs-and-articles';
+  const isNewsActive = location.pathname === '/news';
 
   return (
     <header className="w-full bg-[#0B1728] text-white border-b border-slate-800/80 sticky top-0 z-50 shadow-md">
@@ -36,12 +40,26 @@ export const Header: React.FC = () => {
               <a href="#goals" className="hover:text-white transition-colors">Goals</a>
               <a href="#community" className="hover:text-white transition-colors">Community</a>
               */}
-              <Link to="/blogs-and-articles" className="hover:text-white transition-colors">Blogs and Articles</Link>
-              <a href="#news" className="hover:text-white transition-colors">News</a>
+              <Link
+                to="/blogs-and-articles"
+                className={`transition-colors py-1 px-3 rounded-lg ${
+                  isBlogsActive ? 'text-emerald-400 font-bold bg-emerald-500/10 border border-emerald-500/20' : 'hover:text-white'
+                }`}
+              >
+                Blogs and Articles
+              </Link>
+              <Link
+                to="/news"
+                className={`transition-colors py-1 px-3 rounded-lg ${
+                  isNewsActive ? 'text-emerald-400 font-bold bg-emerald-500/10 border border-emerald-500/20' : 'hover:text-white'
+                }`}
+              >
+                News
+              </Link>
             </nav>
           </div>
 
-          {/* Search bar & User Avatar */}
+          {/* Search bar, Notification Bell & User Avatar */}
           <div className="hidden md:flex items-center gap-5">
             <div className="relative w-72 lg:w-96 xl:w-[420px]">
               <Search className="w-5 h-5 text-slate-400 absolute left-3.5 top-3" />
@@ -52,6 +70,12 @@ export const Header: React.FC = () => {
                 placeholder="Search anything (investors, plans, companies, terms...)"
                 className="w-full py-2.5 pl-11 pr-4 rounded-full bg-slate-900/90 border border-slate-700/80 text-sm lg:text-base text-slate-200 placeholder:text-slate-400 focus:outline-none focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 transition-colors"
               />
+            </div>
+
+            {/* Notification Bell */}
+            <div className="relative p-2.5 rounded-full bg-slate-900 border border-slate-800 text-slate-300 hover:text-white cursor-pointer transition-colors">
+              <Bell className="w-5 h-5" />
+              <span className="absolute top-1.5 right-1.5 w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
             </div>
 
             {/* User Profile Avatar */}
@@ -99,7 +123,7 @@ export const Header: React.FC = () => {
           <a href="#community" className="block px-2 py-2 text-base font-semibold text-slate-300 hover:text-white">Community</a>
           */}
           <Link to="/blogs-and-articles" className="block px-2 py-2 text-base font-semibold text-slate-300 hover:text-white">Blogs and Articles</Link>
-          <a href="#news" className="block px-2 py-2 text-base font-semibold text-slate-300 hover:text-white">News</a>
+          <Link to="/news" className="block px-2 py-2 text-base font-semibold text-slate-300 hover:text-white">News</Link>
         </div>
       )}
     </header>
