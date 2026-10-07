@@ -7,6 +7,8 @@ export const Header: React.FC = () => {
   const [searchQuery, setSearchQuery] = useState('');
   const location = useLocation();
 
+  const isHomeActive = location.pathname === '/';
+  const isPlansActive = location.pathname === '/investment-plans';
   const isBlogsActive = location.pathname === '/blogs-and-articles';
   const isNewsActive = location.pathname === '/news';
 
@@ -30,29 +32,45 @@ export const Header: React.FC = () => {
             </Link>
 
             {/* Desktop Nav Links */}
-            <nav className="hidden lg:flex items-center space-x-6 text-base xl:text-lg 2xl:text-xl font-medium text-slate-300">
-              {/* Commented out previous page navigations:
-              <a href="#discover" className="hover:text-white transition-colors">Discover</a>
-              <a href="#plans" className="hover:text-white transition-colors">Investment Plans</a>
-              <a href="#markets" className="hover:text-white transition-colors">Markets</a>
-              <a href="#learn" className="hover:text-white transition-colors">Learn</a>
-              <a href="#courses" className="hover:text-white transition-colors">Courses</a>
-              <a href="#goals" className="hover:text-white transition-colors">Goals</a>
-              <a href="#community" className="hover:text-white transition-colors">Community</a>
-              */}
+            <nav className="hidden lg:flex items-center space-x-4 xl:space-x-6 text-sm xl:text-base 2xl:text-lg font-medium text-slate-300">
+              <Link
+                to="/"
+                className={`transition-colors py-1 px-3 rounded-lg ${isHomeActive ? 'text-white font-bold' : 'hover:text-white'
+                  }`}
+              >
+                Discover
+              </Link>
+
+              <Link
+                to="/investment-plans"
+                className={`transition-colors py-1 px-3 rounded-lg relative ${isPlansActive
+                  ? 'text-[#00E599] font-bold bg-emerald-500/10 border border-emerald-500/30'
+                  : 'hover:text-white'
+                  }`}
+              >
+                Investment Plans
+              </Link>
+
+              <Link to="/" className="hover:text-white transition-colors py-1 px-3">
+                Markets
+              </Link>
+
+              <Link to="/" className="hover:text-white transition-colors py-1 px-3">
+                Courses
+              </Link>
+
               <Link
                 to="/blogs-and-articles"
-                className={`transition-colors py-1 px-3 rounded-lg ${
-                  isBlogsActive ? 'text-emerald-400 font-bold bg-emerald-500/10 border border-emerald-500/20' : 'hover:text-white'
-                }`}
+                className={`transition-colors py-1 px-3 rounded-lg ${isBlogsActive ? 'text-emerald-400 font-bold bg-emerald-500/10 border border-emerald-500/20' : 'hover:text-white'
+                  }`}
               >
-                Blogs and Articles
+                Blogs & Articles
               </Link>
+
               <Link
                 to="/news"
-                className={`transition-colors py-1 px-3 rounded-lg ${
-                  isNewsActive ? 'text-emerald-400 font-bold bg-emerald-500/10 border border-emerald-500/20' : 'hover:text-white'
-                }`}
+                className={`transition-colors py-1 px-3 rounded-lg ${isNewsActive ? 'text-emerald-400 font-bold bg-emerald-500/10 border border-emerald-500/20' : 'hover:text-white'
+                  }`}
               >
                 News
               </Link>
@@ -61,25 +79,29 @@ export const Header: React.FC = () => {
 
           {/* Search bar, Notification Bell & User Avatar */}
           <div className="hidden md:flex items-center gap-5">
-            <div className="relative w-72 lg:w-96 xl:w-[420px]">
-              <Search className="w-5 h-5 text-slate-400 absolute left-3.5 top-3" />
+            <div className="relative w-64 lg:w-80 xl:w-[360px]">
+              <Search className="w-4 h-4 text-slate-400 absolute left-3.5 top-3" />
               <input
                 type="text"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                placeholder="Search anything (investors, plans, companies, terms...)"
-                className="w-full py-2.5 pl-11 pr-4 rounded-full bg-slate-900/90 border border-slate-700/80 text-sm lg:text-base text-slate-200 placeholder:text-slate-400 focus:outline-none focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 transition-colors"
+                placeholder="Search anything in business, finance, companies, terms..."
+                className="w-full py-2 pl-10 pr-4 rounded-full bg-slate-900/90 border border-slate-700/80 text-xs xl:text-sm text-slate-200 placeholder:text-slate-400 focus:outline-none focus:border-emerald-500 transition-colors"
               />
             </div>
 
             {/* Notification Bell */}
-            <div className="relative p-2.5 rounded-full bg-slate-900 border border-slate-800 text-slate-300 hover:text-white cursor-pointer transition-colors">
+            <button
+              type="button"
+              className="p-2 rounded-full text-slate-300 hover:text-white hover:bg-slate-800 transition-colors relative"
+              aria-label="Notifications"
+            >
               <Bell className="w-5 h-5" />
-              <span className="absolute top-1.5 right-1.5 w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-            </div>
+              <span className="w-2 h-2 rounded-full bg-[#00E599] absolute top-1.5 right-1.5 ring-2 ring-[#0B1728]" />
+            </button>
 
             {/* User Profile Avatar */}
-            <div className="w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-gradient-to-tr from-emerald-500 to-teal-400 p-0.5 cursor-pointer hover:scale-105 transition-transform flex-shrink-0">
+            <div className="w-9 h-9 rounded-full bg-gradient-to-tr from-emerald-500 to-teal-400 p-0.5 cursor-pointer shadow-md">
               <img
                 src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100&auto=format&fit=crop&q=80"
                 alt="User Profile"
@@ -88,11 +110,11 @@ export const Header: React.FC = () => {
             </div>
           </div>
 
-          {/* Mobile Menu Button */}
-          <div className="flex md:hidden items-center gap-2">
+          {/* Mobile Menu Toggle Button */}
+          <div className="flex lg:hidden items-center gap-2">
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="p-2 text-slate-300 hover:text-white"
+              className="p-2.5 rounded-xl text-slate-300 hover:text-white hover:bg-slate-800"
               aria-label="Toggle menu"
             >
               {mobileMenuOpen ? <X className="w-7 h-7" /> : <Menu className="w-7 h-7" />}
@@ -104,26 +126,19 @@ export const Header: React.FC = () => {
 
       {/* Mobile Drawer */}
       {mobileMenuOpen && (
-        <div className="md:hidden bg-[#0A1222] border-b border-slate-800 px-6 py-5 space-y-4">
+        <div className="lg:hidden bg-[#0A1222] border-b border-slate-800 px-6 py-6 space-y-4">
           <div className="relative w-full mb-4">
-            <Search className="w-5 h-5 text-slate-400 absolute left-3.5 top-3" />
+            <Search className="w-4 h-4 text-slate-400 absolute left-3.5 top-3" />
             <input
               type="text"
               placeholder="Search anything..."
-              className="w-full py-2.5 pl-11 pr-4 rounded-full bg-slate-900 border border-slate-700 text-sm text-slate-200"
+              className="w-full py-2 pl-10 pr-4 rounded-full bg-slate-900 border border-slate-700 text-sm text-slate-200"
             />
           </div>
-          {/* Commented out previous page navigations:
-          <a href="#discover" className="block px-2 py-2 text-base font-semibold text-slate-300 hover:text-white">Discover</a>
-          <a href="#plans" className="block px-2 py-2 text-base font-semibold text-slate-300 hover:text-white">Investment Plans</a>
-          <a href="#markets" className="block px-2 py-2 text-base font-semibold text-slate-300 hover:text-white">Markets</a>
-          <a href="#learn" className="block px-2 py-2 text-base font-semibold text-slate-300 hover:text-white">Learn</a>
-          <a href="#courses" className="block px-2 py-2 text-base font-semibold text-slate-300 hover:text-white">Courses</a>
-          <a href="#goals" className="block px-2 py-2 text-base font-semibold text-slate-300 hover:text-white">Goals</a>
-          <a href="#community" className="block px-2 py-2 text-base font-semibold text-slate-300 hover:text-white">Community</a>
-          */}
-          <Link to="/blogs-and-articles" className="block px-2 py-2 text-base font-semibold text-slate-300 hover:text-white">Blogs and Articles</Link>
-          <Link to="/news" className="block px-2 py-2 text-base font-semibold text-slate-300 hover:text-white">News</Link>
+          <Link to="/" onClick={() => setMobileMenuOpen(false)} className="block py-2 text-base font-medium text-slate-200 hover:text-white">Discover</Link>
+          <Link to="/investment-plans" onClick={() => setMobileMenuOpen(false)} className="block py-2 text-base font-bold text-[#00E599]">Investment Plans</Link>
+          <Link to="/blogs-and-articles" onClick={() => setMobileMenuOpen(false)} className="block py-2 text-base font-medium text-slate-200 hover:text-white">Blogs & Articles</Link>
+          <Link to="/news" onClick={() => setMobileMenuOpen(false)} className="block py-2 text-base font-medium text-slate-200 hover:text-white">News</Link>
         </div>
       )}
     </header>
