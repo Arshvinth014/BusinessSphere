@@ -52,6 +52,23 @@ export interface InvestmentPlan {
   imageUrl: string;
 }
 
+export interface CuratedPlan {
+  id: string;
+  title: string;
+  subtitleTag: string;
+  riskBadge: 'LOW RISK' | 'MODERATE RISK' | 'HIGH RISK';
+  riskBadgeClass: string;
+  description: string;
+  expectedReturn: string;
+  minDeposit: string;
+  assetAllocationText: string;
+  allocationBreakdown: { label: string; percent: number; color: string }[];
+  features: string[];
+  imageUrl: string;
+  buttonLabel: string;
+  buttonVariant: 'emerald' | 'dark';
+}
+
 export interface NewsItem {
   id: string;
   category: string;
@@ -76,5 +93,12 @@ export interface GoalItem {
   title: string;
   subtitle: string;
   progressPercent: number;
+  iconName: string;
+}
+
+export interface SafeguardItem {
+  id: string;
+  title: string;
+  subtitle: string;
   iconName: string;
 }
