@@ -3,7 +3,7 @@ import { Header } from '../components/layout/Header';
 import { Footer } from '../components/layout/Footer';
 import { HeroSection } from '../components/home/HeroSection';
 import { OverviewGridSection } from '../components/home/OverviewGridSection';
-import { FeaturedCoursesSection } from '../components/home/FeaturedCoursesSection';
+// import { FeaturedCoursesSection } from '../components/home/FeaturedCoursesSection';
 import { LatestArticlesSection } from '../components/home/LatestArticlesSection';
 import { PopularPlansSection } from '../components/home/PopularPlansSection';
 import { NewsExpertsTestimonialSection } from '../components/home/NewsExpertsTestimonialSection';
@@ -21,7 +21,7 @@ export const HomePage: React.FC = () => {
       {/* 3. Main Content - CONTAINED WITH LEFT & RIGHT MARGINS */}
       <main className="flex-1 w-full max-w-[1700px] 2xl:max-w-[2200px] mx-auto px-4 sm:px-6 md:px-8 lg:px-12 2xl:px-16 py-8 sm:py-10 space-y-8 sm:space-y-10 lg:space-y-12">
         <OverviewGridSection />
-        <FeaturedCoursesSection />
+        {/* <FeaturedCoursesSection /> */}
         <LatestArticlesSection />
         <PopularPlansSection />
         <NewsExpertsTestimonialSection />
