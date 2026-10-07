@@ -20,7 +20,7 @@ export const Header: React.FC = () => {
           <div className="flex items-center gap-8">
             <Link to="/" className="flex items-center gap-3 group">
               <img
-                src="/LogoBusinessSphere.PNG"
+                src="/LogoBSphere.png"
                 alt="BusinessSphere Logo"
                 className="h-9 sm:h-10 w-auto object-contain transition-transform group-hover:scale-105"
               />

@@ -24,7 +24,7 @@ export const Footer: React.FC = () => {
           <div className="lg:col-span-1 space-y-3">
             <a href="/" className="flex items-center gap-2.5 group">
               <img
-                src="/LogoBusinessSphere.PNG"
+                src="/LogoBSphere.png"
                 alt="BusinessSphere"
                 className="h-8 sm:h-9 w-auto object-contain transition-transform group-hover:scale-105"
               />
