@@ -7,8 +7,9 @@ export const Header: React.FC = () => {
   const [searchQuery, setSearchQuery] = useState('');
   const location = useLocation();
 
-  const isHomeActive = location.pathname === '/';
   const isPlansActive = location.pathname === '/investment-plans';
+  const isMarketsActive = location.pathname === '/markets' || location.pathname === '/';
+  const isGoalsActive = location.pathname === '/goals';
   const isBlogsActive = location.pathname === '/blogs-and-articles';
   const isNewsActive = location.pathname === '/news';
 
@@ -20,7 +21,7 @@ export const Header: React.FC = () => {
 
           {/* Logo */}
           <div className="flex items-center gap-8">
-            <Link to="/" className="flex items-center gap-3 group">
+            <Link to="/home" className="flex items-center gap-3 group">
               <img
                 src="/LogoBSphere.png"
                 alt="BusinessSphere Logo"
@@ -34,14 +35,6 @@ export const Header: React.FC = () => {
             {/* Desktop Nav Links */}
             <nav className="hidden lg:flex items-center space-x-4 xl:space-x-6 text-sm xl:text-base 2xl:text-lg font-medium text-slate-300">
               <Link
-                to="/"
-                className={`transition-colors py-1 px-3 rounded-lg ${isHomeActive ? 'text-white font-bold' : 'hover:text-white'
-                  }`}
-              >
-                Discover
-              </Link>
-
-              <Link
                 to="/investment-plans"
                 className={`transition-colors py-1 px-3 rounded-lg relative ${isPlansActive
                   ? 'text-[#00E599] font-bold bg-emerald-500/10 border border-emerald-500/30'
@@ -51,12 +44,28 @@ export const Header: React.FC = () => {
                 Investment Plans
               </Link>
 
-              <Link to="/" className="hover:text-white transition-colors py-1 px-3">
+              <Link
+                to="/markets"
+                className={`transition-colors py-1 px-3 rounded-lg relative ${isMarketsActive
+                  ? 'text-[#00E599] font-bold bg-emerald-500/10 border border-emerald-500/30'
+                  : 'hover:text-white'
+                  }`}
+              >
                 Markets
               </Link>
 
-              <Link to="/" className="hover:text-white transition-colors py-1 px-3">
+              <Link to="/home" className="hover:text-white transition-colors py-1 px-3">
                 Courses
+              </Link>
+
+              <Link
+                to="/goals"
+                className={`transition-colors py-1 px-3 rounded-lg relative ${isGoalsActive
+                  ? 'text-[#00E599] font-bold bg-emerald-500/10 border border-emerald-500/30'
+                  : 'hover:text-white'
+                  }`}
+              >
+                Goals
               </Link>
 
               <Link
@@ -135,8 +144,9 @@ export const Header: React.FC = () => {
               className="w-full py-2 pl-10 pr-4 rounded-full bg-slate-900 border border-slate-700 text-sm text-slate-200"
             />
           </div>
-          <Link to="/" onClick={() => setMobileMenuOpen(false)} className="block py-2 text-base font-medium text-slate-200 hover:text-white">Discover</Link>
-          <Link to="/investment-plans" onClick={() => setMobileMenuOpen(false)} className="block py-2 text-base font-bold text-[#00E599]">Investment Plans</Link>
+          <Link to="/investment-plans" onClick={() => setMobileMenuOpen(false)} className="block py-2 text-base font-bold text-slate-200 hover:text-white">Investment Plans</Link>
+          <Link to="/markets" onClick={() => setMobileMenuOpen(false)} className="block py-2 text-base font-bold text-[#00E599]">Markets</Link>
+          <Link to="/goals" onClick={() => setMobileMenuOpen(false)} className={`block py-2 text-base font-bold ${isGoalsActive ? 'text-[#00E599]' : 'text-slate-200 hover:text-white'}`}>Goals</Link>
           <Link to="/blogs-and-articles" onClick={() => setMobileMenuOpen(false)} className="block py-2 text-base font-medium text-slate-200 hover:text-white">Blogs & Articles</Link>
           <Link to="/news" onClick={() => setMobileMenuOpen(false)} className="block py-2 text-base font-medium text-slate-200 hover:text-white">News</Link>
         </div>
